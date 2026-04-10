@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Инфо блоки рядом с кнопками</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f0f0f0;
+    margin-left: 375px;
+  }
+
+  /* Таблица с кнопками */
+  table {
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    border-spacing: 0;
+  }
+  
+  td {
+    text-align: center;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 45px;
+    cursor: pointer;
+    border:0;
+    background: #fff;
+    transition: background 0.2s;
+    width: 370px;
+    height: 285px;
+  }
+
+  button:hover {
+    background: #ddd;
+  }
+
+  /* Обертка для кнопки и блока сбоку */
+  .button-container {
+    display: flex;
+    align-items: center;
+    position: relative; /* чтобы позиционировать блок */
+  }
+
+  /* Позиционирование блоков сбоку: слева или справа */
+  .info-block {
+    position: absolute;
+    top: 0; /* на одном уровне с кнопкой */
+    max-height: 200px;
+    width: 250px;
+    padding: 10px;
+    border: 2px solid #854442;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 2px 2px 12px rgba(0,0,0,0.2);
+    overflow-y: auto;
+    transition: all 0.3s;
+    z-index: 1;
+  }
+
+  /* Расположение блока слева */
+  .left-side {
+    right: 100%; /* за кнопкой слева */
+    margin-right: 10px;
+    width: 320px;
+  }
+
+  /* Расположение блока справа */
+  .right-side {
+    left: 100%; /* за кнопкой справа */
+    margin-left: 10px;
+    width: 320px;
+  }
+
+  /* Заголовки темы */
+  .topic-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .button-container img{
+    max-width: 370px;
+    margin-bottom: -7px;
+    margin-top: -7px;
+
+}
+</style>
+</head>
+<body>
+
+<h2>Выберите тему:</h2>
+<table>
+  <tr>
+    <td>
+      <div class="button-container">
+        <img src="img/frontend.png">
+      </div>
+    </td>
+    <td>
+      <div class="button-container">
+        <button data-topic="Frontend" data-side="right" data-id="0"><span style="text-align: left;"><h3>Frontend developers</h3></span></button>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="button-container">
+        <button data-topic="Backend" data-side="left" data-id="1"><span style="text-align: right;"><h3>Backend developers</h3></span></button>
+      </div>
+    </td>
+    <td>
+      <div class="button-container">
+        <img src="img/backend.png">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="button-container">
+        <img src="img/devops.png">
+      </div>
+    </td>
+    <td>
+      <div class="button-container">
+        <button data-topic="Тема 6" data-side="right" data-id="5"><span style="text-align: left;"><h3>DevOps developers</h3></span></button>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="button-container">
+        <button data-topic="Frontend" data-side="right" data-id="0"><span style="text-align: right;"><h3>Testers</h3></span></button>
+      </div>
+    </td>
+    <td>
+      <div class="button-container">
+        <img src="img/testers.png">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="button-container">
+        <img src="img/designers.png">
+      </div>
+    </td>
+    <td>
+      <div class="button-container">
+        <button data-topic="Frontend" data-side="right" data-id="0"><span style="text-align: left;"><h3>Designers</h3></span></button>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="button-container">
+        <button data-topic="Тема 6" data-side="right" data-id="5"><span style="text-align: right;"><h3>Software developers</h3></span></button>
+      </div>
+    </td>
+    <td>
+      <div class="button-container">
+        <img src="img/software.png">
+      </div>
+    </td>
+  </tr>
+  <tr></tr>
+    <td>
+      <div class="button-container">
+        <img src="img/data.png">
+      </div>
+    </td>
+    <td>
+      <div class="button-container">
+        <button data-topic="Frontend" data-side="right" data-id="0"><span style="text-align: left;"><h3>Data scientits</h3></span></button>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<script>
+const buttons = document.querySelectorAll('button');
+let currentLeftBlock = null;
+let currentRightBlock = null;
+
+const topics = [
+  { title: 'Тема 1', description: 'Объемный текст о Теме 1. Здесь много информации и деталейОбъемный текст о Теме 1. Здесь много информации и деталейОбъемный текст о Теме 1. Здесь много информации и деталейОбъемный текст о Теме 1. Здесь много информации и деталейОбъемный текст о Теме 1. Здесь много информации и деталейОбъемный текст о Теме 1. Здесь много информации и деталейОбъемный текст о Теме 1. Здесь много информации и деталейОбъемный текст о Теме 1. Здесь много информации и деталей.' },
+  { title: 'Тема 2', description: 'Объемный текст о Теме 2. Подробности и разные нюансы.' },
+  { title: 'Тема 3', description: 'Объемный текст о Теме 3. Все важные моменты.' },
+  { title: 'Тема 4', description: 'Объемный текст о Теме 4. Полезные факты и объяснения.' },
+  { title: 'Тема 5', description: 'Объемный текст о Теме 5. Интересные сведения.' },
+  { title: 'Тема 6', description: 'Объемный текст о Теме 6. Подробности, разъяснения и история.' }
+];
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const topicIdx = parseInt(btn.dataset.id);
+    const side = btn.dataset.side; // 'left' или 'right'
+
+    // Удаляем существующий блок, соответствующий стороне
+    if (side === 'left' && currentLeftBlock) {
+      currentLeftBlock.remove();
+      currentLeftBlock = null;
+    }
+    if (side === 'right' && currentRightBlock) {
+      currentRightBlock.remove();
+      currentRightBlock = null;
+    }
+
+    // Создаем новый блок
+    const block = document.createElement('div');
+    block.className = 'info-block';
+
+    // Заполняем содержимое
+    const topic = topics[topicIdx];
+    block.innerHTML = `<div class="topic-title">${topic.title}</div><div>${topic.description}</div>`;
+
+    // Расположение блока
+    if (side === 'left') {
+      block.classList.add('left-side');
+      currentLeftBlock = block;
+    } else {
+      block.classList.add('right-side');
+      currentRightBlock = block;
+    }
+
+    // Вставляем блок рядом с кнопкой
+    btn.parentElement.appendChild(block);
+  });
+});
+</script>
+
+</body>
+</html>

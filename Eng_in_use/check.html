@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Галерея с модальным окном</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #f0f0f0;
+    }
+    .gallery {
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .photo {
+      width: 180px;
+      height: 120px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.2s;
+      border: 2px solid #fff;
+      background: #fff;
+    }
+    .photo:hover {
+      transform: scale(1.06);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.18);
+      border-color: #aaa;
+    }
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Модальное окно */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 50;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 24px 32px 24px 32px;
+      border-radius: 14px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+      position: relative;
+      animation: popIn 0.3s;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.7);}
+      to   { transform: scale(1);}
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 18px;
+      top: 10px;
+      font-size: 24px;
+      color: #888;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .modal-close:hover {
+      color: #F44336;
+    }
+  </style>
+</head>
+<body>
+
+<h2 style="text-align:center; margin-bottom: 35px;">Галерея</h2>
+
+<div class="gallery">
+  <div class="photo" onclick="showModal(0)">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Фото 1"/>
+  </div>
+  <div class="photo" onclick="showModal(1)">
+    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Фото 2"/>
+  </div>
+  <div class="photo" onclick="showModal(2)">
+    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80" alt="Фото 3"/>
+  </div>
+  <div class="photo" onclick="showModal(3)">
+    <img src="https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?auto=format&fit=crop&w=400&q=80" alt="Фото 4"/>
+  </div>
+</div>
+
+<!-- Модальное окно -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div id="modalText">
+      <!-- Здесь будет текст -->
+    </div>
+  </div>
+</div>
+
+<script>
+  // Информация по каждому фото
+  const infos = [
+    "Это прекрасный горный пейзаж в лучах заката. Всё выглядит впечатляюще и гармонично.",
+    "Лесная тропинка в лучах солнца. Отличное место для прогулок и уединения с природой.",
+    "Портрет улыбающейся девушки на фоне зелени. Лёгкость, радость и тепло жизни.",
+    "Морской берег на рассвете. Песок, волны и свежий бриз — просто мечта!"
+  ];
+
+  function showModal(idx) {
+    document.getElementById('modal').style.display = 'flex';
+    document.getElementById('modalText').innerText = infos[idx];
+    // Закрытие по клику вне окна
+    setTimeout(() => {
+      document.getElementById('modal').onclick = function(e) {
+        if (e.target === this) closeModal();
+      };
+    }, 10); // чуть позже, чтобы не сработало на открытие
+  }
+
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+
+  // ESC для закрытия окна
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') closeModal();
+  });
+</script>
+
+</body>
+</html>

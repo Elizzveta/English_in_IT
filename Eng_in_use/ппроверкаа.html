@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Кнопки и фото с боковыми блоками</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f0f0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  .table-container {
+    position: relative;
+  }
+  table {
+    border-collapse: collapse;
+  }
+  td {
+    padding: 20px;
+    position: relative;
+    vertical-align: middle;
+  }
+  /* Общие стили кнопок и фото */
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 6px;
+    position: relative;
+  }
+  .photo {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    display: inline-block;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  /* Стиль для бокового блока */
+  .side-block {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+    padding: 0 10px;
+  }
+
+  /* Показывать блок */
+  .side-block.show {
+    max-height: 500px;
+    padding: 10px;
+  }
+
+  /* Расположение блоков слева или справа */
+  .td-left .side-block {
+    right: 0; /* справа от кнопки */
+    margin-left: 10px;
+  }
+
+  .td-right .side-block {
+    left: 0; /* слева от кнопки */
+    margin-right: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="table-container">
+<table>
+  <tr>
+    <!-- Первая строка - слева -->
+    <td class="td-left" style="position: relative;">
+      <div style="display: flex; align-items: center;">
+        <button class="btn" data-topic="1" style="margin-right:10px;">Тема 1</button>
+        <div class="photo"></div>
+      </div>
+      <div class="side-block" id="block-1">
+        <h3>Объемная тема 1</h3>
+        <p>Это подробная информация о первой теме. Здесь много детальных фактов и объяснений, расширяющих тему.</p>
+      </div>
+    </td>
+    <!-- Вторая строка - справа -->
+    <td class="td-right" style="position: relative;">
+      <div style="display: flex; align-items: center;">
+        <div class="photo"></div>
+        <button class="btn" data-topic="2" style="margin-left:10px;">Тема 2</button>
+      </div>
+      <div class="side-block" id="block-2">
+        <h3>Объемная тема 2</h3>
+        <p>Подробности о второй теме. Развернутая информация и расширенные факты.</p>
+      </div>
+    </td>
+  </tr>
+</table>
+</div>
+
+<script>
+const buttons = document.querySelectorAll('.btn');
+let activeBlock = null;
+
+// Обработчик кнопок
+buttons.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const topicId = 'block-' + btn.getAttribute('data-topic');
+    const newBlock = document.getElementById(topicId);
+
+    if (activeBlock && activeBlock !== newBlock) {
+      activeBlock.classList.remove('show');
+    }
+
+    // Переключение
+    if (activeBlock === newBlock) {
+      // Если тот же, то закрываем
+      newBlock.classList.toggle('show');
+      if (!newBlock.classList.contains('show')) {
+        activeBlock = null;
+      }
+    } else {
+      newBlock.classList.add('show');
+      activeBlock = newBlock;
+    }
+  });
+});
+
+// Клик вне всего — закрытие
+document.addEventListener('click', () => {
+  if (activeBlock) {
+    activeBlock.classList.remove('show');
+    activeBlock = null;
+  }
+});
+</script>
+
+</body>
+</html>

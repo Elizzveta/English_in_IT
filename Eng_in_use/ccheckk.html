@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Кнопки с боковыми блоками</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f8f8f8;
+    margin-left: 240px;
+  }
+
+  table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  td {
+    padding: 20px;
+    text-align: center;
+    width: 150px;
+    /* max-width: 154px; */
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 2px solid #444;
+    border-radius: 5px;
+    background: #fff;
+    transition: background 0.2s;
+  }
+
+  button:hover {
+    background: #ddd;
+  }
+
+  .button-container {
+    position: relative;
+  }
+
+
+  .info-block {
+    overflow: hidden;
+    /* max-width: 250px; */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* width: 288px; */
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 2px 2px 12px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 1;
+  }
+
+  .left-position {
+    right: 100%; 
+    margin-right: 10px;
+  }
+
+  .right-position {
+    left: 100%;       
+    margin-left: 10px;
+  }
+
+  .topic-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+
+  .button-container img{
+    max-width: 370px;
+    margin-bottom: -7px;
+
+}
+</style>
+</head>
+<body>
+
+<table>
+  <!--Первая строка-->
+  <tr>
+    <td>
+      <div class="button-container">
+        <img src="img/frontend.png">
+      </div>
+    </td>
+    <td>
+      <div class="button-container">
+        <button data-topic="Frontend" data-position="right" data-index="1">Frontend Developers</button>
+        <div class="info-block" id="block-1">
+          <div class="topic-title">Dictionary of Frontent developers:</div>
+          <div>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <!--Конец первой строки-->
+
+  <!--Вторая строка-->
+  <tr>
+    <td>
+      <div class="button-container">
+        <button data-topic="Backend" data-position="left" data-index="2">Тема 2</button>
+        <div class="info-block" id="block-2">
+          <div class="topic-title">Dictionary of Frontent developers:</div>
+          <div>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="button-container">
+        <img src="img/backend.png">
+      </div>
+    </td>
+  </tr>
+  <!--Конец второй строки-->
+
+  <!--Третья строка-->
+  <tr>
+    <td>
+      <div class="button-container">
+        <img src="img/frontend.png">
+      </div>
+    </td>
+    <td>
+      <div class="button-container">
+        <button data-topic="Тема 6" data-position="right" data-index="3">Тема 6</button>
+        <div class="info-block" id="block-3">
+          <div class="topic-title">Dictionary of Frontent developers:</div>
+          <div>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <!--Конец третьей строки-->
+
+  <!--Четвертая строка-->
+  <tr>
+    <td>
+      <div class="button-container">
+        <button data-topic="Тема 2" data-position="left" data-index="4">Тема 2</button>
+        <div class="info-block" id="block-4">
+          <div class="topic-title">Dictionary of Frontent developers:</div>
+          <div>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="button-container">
+        <img src="img/frontend.png">
+      </div>
+    </td>
+  </tr>
+  <!--Конец четвертой строки-->
+
+  <!--Пятая строка-->
+  <tr>
+    <td>
+      <div class="button-container">
+        <img src="img/frontend.png">
+      </div>
+    </td>
+    <td>
+      <div class="button-container">
+        <button data-topic="Тема 6" data-position="right" data-index="5">Тема 6</button>
+        <div class="info-block" id="block-5">
+          <div class="topic-title">Dictionary of Frontent developers:</div>
+          <div>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <!--Конец пятой строки-->
+
+  <!--Шестая строка-->
+  <tr>
+    <td>
+      <div class="button-container">
+        <button data-topic="Тема 2" data-position="left" data-index="6">Тема 2</button>
+        <div class="info-block" id="block-6">
+          <div class="topic-title">Dictionary of Frontent developers:</div>
+          <div>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="button-container">
+        <img src="img/frontend.png">
+      </div>
+    </td>
+  </tr>
+  <!--Конец шестой строки-->
+
+  <!--Седьмая строка-->
+  <tr>
+    <td>
+      <div class="button-container">
+        <img src="img/frontend.png">
+      </div>
+    </td>
+    <td>
+      <div class="button-container">
+        <button data-topic="Тема 6" data-position="right" data-index="7">Тема 6</button>
+        <div class="info-block" id="block-7">
+          <div class="topic-title">Dictionary of Frontent developers:</div>
+          <div>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+            <p><span style="color: #854442; font-weight: bold">Abbreviation</span> — Aббревиатура. Сокращенная форма слова или словосочетания из первых (нескольких первых) букв.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <!--Конец седьмой строки-->
+</table>
+
+<script>
+const buttons = document.querySelectorAll('button');
+
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const index = btn.getAttribute('data-index');
+    const position = btn.getAttribute('data-position');
+
+    document.querySelectorAll('.info-block').forEach(b => {
+      b.style.display = 'none';
+    });
+
+    const block = document.getElementById(`block-${index}`);
+    block.className = 'info-block'; 
+    if (position === 'left') {
+      block.classList.add('left-position');
+    } else {
+      block.classList.add('right-position');
+    }
+    block.style.display = 'block';
+  });
+});
+</script>
+
+</body>
+</html>

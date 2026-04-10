@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Бургер-меню алфавита</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  /* Стиль бургер-иконки */
+  .burger {
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+    border: 1px solid #333;
+    border-radius: 4px;
+  }
+
+  .burger div {
+    height: 3px;
+    background-color: #333;
+  }
+
+  /* Меню с буквами */
+  .alphabet {
+    display: none; /* изначально скрыто */
+    flex-wrap: wrap;
+    margin-top: 10px;
+    max-width: 400px;
+  }
+
+  .alphabet.show {
+    display: flex;
+  }
+
+  /* Буквы алфавита */
+  .letter {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 5px;
+    background-color: #eee;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+    user-select: none;
+    transition: background-color 0.2s;
+  }
+
+  .letter:hover {
+    background-color: #ddd;
+  }
+</style>
+</head>
+<body>
+
+<h2>Алфавитная навигация — бургер-меню</h2>
+
+<!-- Бургер-иконка -->
+<div class="burger" id="burgerMenu" title="Меню">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<!-- Меню букв -->
+<div class="alphabet" id="alphabetMenu">
+  <!-- добавьте сюда нужные буквы -->
+  <div class="letter" data-letter="А">А</div>
+  <div class="letter" data-letter="Б">Б</div>
+  <div class="letter" data-letter="В">В</div>
+  <div class="letter" data-letter="Г">Г</div>
+  <div class="letter" data-letter="Д">Д</div>
+  <div class="letter" data-letter="Е">Е</div>
+  <div class="letter" data-letter="Ж">Ж</div>
+  <div class="letter" data-letter="З">З</div>
+  <div class="letter" data-letter="И">И</div>
+  <div class="letter" data-letter="К">К</div>
+  <div class="letter" data-letter="Л">Л</div>
+  <div class="letter" data-letter="М">М</div>
+  <div class="letter" data-letter="О">О</div>
+  <div class="letter" data-letter="П">П</div>
+  <div class="letter" data-letter="Р">Р</div>
+  <div class="letter" data-letter="С">С</div>
+  <div class="letter" data-letter="Т">Т</div>
+  <div class="letter" data-letter="У">У</div>
+  <div class="letter" data-letter="Ф">Ф</div>
+  <div class="letter" data-letter="Х">Х</div>
+  <div class="letter" data-letter="Ц">Ц</div>
+  <div class="letter" data-letter="Ч">Ч</div>
+  <div class="letter" data-letter="Ш">Ш</div>
+  <div class="letter" data-letter="Щ">Щ</div>
+  <div class="letter" data-letter="Ъ">Ъ</div>
+  <div class="letter" data-letter="Ы">Ы</div>
+  <div class="letter" data-letter="Ь">Ь</div>
+  <div class="letter" data-letter="Э">Э</div>
+  <div class="letter" data-letter="Ю">Ю</div>
+  <div class="letter" data-letter="Я">Я</div>
+</div>
+
+<script>
+  const burger = document.getElementById('burgerMenu');
+  const alphabetMenu = document.getElementById('alphabetMenu');
+
+  // Переключаем отображение меню при клике
+  burger.addEventListener('click', () => {
+    alphabetMenu.classList.toggle('show');
+  });
+
+  // Обработка клика по буквам
+  document.querySelectorAll('.letter').forEach(letter => {
+    letter.addEventListener('click', () => {
+      const selectedLetter = letter.dataset.letter;
+      alert(`Вы выбрали букву: ${selectedLetter}`);
+      // Тут можно реализовать скролл к нужной части словаря
+    });
+  });
+</script>
+
+</body>
+</html>
